@@ -13,6 +13,7 @@ import {
   ApplicationExpert,
   PreExamStatus,
 } from '../types';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   ShieldCheck,
   Clock,
@@ -1493,8 +1494,10 @@ export const AdmissionCounsellingPage: React.FC = () => {
                         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                           <div className="flex items-start gap-4">
                             <img
-                              src={counsellor.photoUrl}
+                              src={sanitizeImageUrl(counsellor.photoUrl, counsellor.name)}
                               alt={counsellor.name}
+                              referrerPolicy="no-referrer"
+                              onError={(e) => handleImageError(e, counsellor.name)}
                               className="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0"
                             />
                             <div>
@@ -2188,8 +2191,10 @@ export const AdmissionCounsellingPage: React.FC = () => {
                         >
                           <div className="flex items-center gap-3.5">
                             <img
-                              src={expert.photoUrl}
+                              src={sanitizeImageUrl(expert.photoUrl, expert.name)}
                               alt={expert.name}
+                              referrerPolicy="no-referrer"
+                              onError={(e) => handleImageError(e, expert.name)}
                               className="w-14 h-14 rounded-xl object-cover border border-slate-200 shrink-0"
                             />
                             <div>
@@ -2744,8 +2749,10 @@ export const AdmissionCounsellingPage: React.FC = () => {
                         >
                           <div className="flex items-center gap-3.5">
                             <img
-                              src={expert.photoUrl}
+                              src={sanitizeImageUrl(expert.photoUrl, expert.name)}
                               alt={expert.name}
+                              referrerPolicy="no-referrer"
+                              onError={(e) => handleImageError(e, expert.name)}
                               className="w-14 h-14 rounded-xl object-cover border border-slate-200 shrink-0"
                             />
                             <div>
@@ -2962,8 +2969,10 @@ export const AdmissionCounsellingPage: React.FC = () => {
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                         <div className="flex items-center gap-3">
                           <img
-                            src={bkg.counsellorPhoto}
+                            src={sanitizeImageUrl(bkg.counsellorPhoto, bkg.counsellorName)}
                             alt={bkg.counsellorName}
+                            referrerPolicy="no-referrer"
+                            onError={(e) => handleImageError(e, bkg.counsellorName)}
                             className="w-12 h-12 rounded-xl object-cover border border-slate-200 shrink-0"
                           />
                           <div>
@@ -3336,8 +3345,10 @@ export const AdmissionCounsellingPage: React.FC = () => {
                 .map((expert) => (
                   <div key={expert.id} className="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
                     <img
-                      src={expert.photoUrl}
+                      src={sanitizeImageUrl(expert.photoUrl, expert.name)}
                       alt={expert.name}
+                      referrerPolicy="no-referrer"
+                      onError={(e) => handleImageError(e, expert.name)}
                       className="w-16 h-16 rounded-xl object-cover border border-slate-200 mx-auto"
                     />
                     <div className="text-center">

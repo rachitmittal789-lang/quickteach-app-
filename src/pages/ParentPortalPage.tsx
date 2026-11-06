@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { GRADES_LIST, BOARDS_LIST } from '../data/mockData';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   User,
   Users,
@@ -194,9 +195,10 @@ export const ParentPortalPage: React.FC = () => {
 
                         {b.tutorPhoto && (
                           <img
-                            src={b.tutorPhoto}
+                            src={sanitizeImageUrl(b.tutorPhoto, b.tutorName)}
                             alt={b.tutorName}
                             referrerPolicy="no-referrer"
+                            onError={(e) => handleImageError(e, b.tutorName)}
                             className="w-14 h-14 rounded-xl object-cover border border-slate-200 shrink-0"
                           />
                         )}
@@ -380,9 +382,10 @@ export const ParentPortalPage: React.FC = () => {
                   <div>
                     <div className="flex items-center gap-3">
                       <img
-                        src={tutor.photoUrl}
+                        src={sanitizeImageUrl(tutor.photoUrl, tutor.name)}
                         alt={tutor.name}
                         referrerPolicy="no-referrer"
+                        onError={(e) => handleImageError(e, tutor.name)}
                         className="w-14 h-14 rounded-xl object-cover border border-slate-200"
                       />
                       <div>

@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   Mic,
   MicOff,
@@ -162,9 +163,10 @@ export const LiveCallPage: React.FC = () => {
         {/* Left: Tutor info & status */}
         <div className="flex items-center gap-3">
           <img
-            src={activeDoubtSession.tutorPhoto}
+            src={sanitizeImageUrl(activeDoubtSession.tutorPhoto, activeDoubtSession.tutorName)}
             alt={activeDoubtSession.tutorName}
             referrerPolicy="no-referrer"
+            onError={(e) => handleImageError(e, activeDoubtSession.tutorName)}
             className="w-10 h-10 rounded-full object-cover border border-slate-700"
           />
           <div>
@@ -334,9 +336,10 @@ export const LiveCallPage: React.FC = () => {
             {/* Tutor Video */}
             <div className="relative rounded-xl overflow-hidden aspect-video bg-slate-950 border border-slate-800">
               <img
-                src={activeDoubtSession.tutorPhoto}
+                src={sanitizeImageUrl(activeDoubtSession.tutorPhoto, activeDoubtSession.tutorName)}
                 alt="Tutor video feed"
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, activeDoubtSession.tutorName)}
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-2 left-2 bg-slate-900/80 px-2 py-0.5 rounded text-[11px] font-semibold text-white">

@@ -12,6 +12,7 @@ import {
   GRADES_LIST,
   LANGUAGES_LIST,
 } from '../data/mockData';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   Clock,
   MapPin,
@@ -852,9 +853,10 @@ export const InstantTutorPage: React.FC = () => {
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-slate-200">
                     <div className="flex items-start sm:items-center gap-4">
                       <img
-                        src={featuredTutor.photoUrl}
+                        src={sanitizeImageUrl(featuredTutor.photoUrl, featuredTutor.name)}
                         alt={featuredTutor.name}
                         referrerPolicy="no-referrer"
+                        onError={(e) => handleImageError(e, featuredTutor.name)}
                         className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-slate-200 shrink-0"
                       />
                       <div>
@@ -1032,9 +1034,10 @@ export const InstantTutorPage: React.FC = () => {
                           {/* Top Row: Photo & Details */}
                           <div className="flex items-start gap-3.5 pb-3 border-b border-slate-100">
                             <img
-                              src={tutor.photoUrl}
+                              src={sanitizeImageUrl(tutor.photoUrl, tutor.name)}
                               alt={tutor.name}
                               referrerPolicy="no-referrer"
+                              onError={(e) => handleImageError(e, tutor.name)}
                               className="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0"
                             />
                             <div className="min-w-0 flex-1">
@@ -1141,9 +1144,10 @@ export const InstantTutorPage: React.FC = () => {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-6 border-b border-slate-200">
                   <div className="flex items-center gap-4">
                     <img
-                      src={matchedTutor.photoUrl}
+                      src={sanitizeImageUrl(matchedTutor.photoUrl, matchedTutor.name)}
                       alt={matchedTutor.name}
                       referrerPolicy="no-referrer"
+                      onError={(e) => handleImageError(e, matchedTutor.name)}
                       className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl object-cover border-2 border-slate-200 shrink-0"
                     />
                     <div>
@@ -1435,9 +1439,10 @@ export const InstantTutorPage: React.FC = () => {
             {/* Profile Header */}
             <div className="flex items-start gap-4">
               <img
-                src={selectedTutorModal.photoUrl}
+                src={sanitizeImageUrl(selectedTutorModal.photoUrl, selectedTutorModal.name)}
                 alt={selectedTutorModal.name}
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, selectedTutorModal.name)}
                 className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-slate-200 shrink-0"
               />
               <div>

@@ -13,6 +13,7 @@ import {
   BOARDS_LIST,
 } from '../data/mockData';
 import { CareerCounsellor } from '../types';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   Compass,
   CheckCircle,
@@ -646,9 +647,10 @@ export const CareerCounsellingPage: React.FC = () => {
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <img
-                        src={counsellor.photoUrl}
+                        src={sanitizeImageUrl(counsellor.photoUrl, counsellor.name)}
                         alt={counsellor.name}
                         referrerPolicy="no-referrer"
+                        onError={(e) => handleImageError(e, counsellor.name)}
                         className="w-14 h-14 rounded-xl object-cover border border-slate-200 shrink-0"
                       />
                       <div>
@@ -742,9 +744,10 @@ export const CareerCounsellingPage: React.FC = () => {
               {/* Selected Counsellor card */}
               <div className="p-4 bg-blue-50/50 rounded-xl border border-blue-100 flex items-center gap-4">
                 <img
-                  src={selectedCounsellor.photoUrl}
+                  src={sanitizeImageUrl(selectedCounsellor.photoUrl, selectedCounsellor.name)}
                   alt={selectedCounsellor.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, selectedCounsellor.name)}
                   className="w-16 h-16 rounded-xl object-cover border border-blue-200 shrink-0"
                 />
                 <div>

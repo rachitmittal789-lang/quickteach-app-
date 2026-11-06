@@ -19,6 +19,7 @@ import {
   ChevronRight,
   BookOpen,
 } from 'lucide-react';
+import { EDUCATOR_PORTRAITS, sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 
 export const HomePage: React.FC = () => {
   const { setCurrentPage, tutors, pricingConfig } = useApp();
@@ -85,10 +86,11 @@ export const HomePage: React.FC = () => {
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 aspect-[4/3] lg:aspect-auto lg:h-[460px]">
                 <img
-                  src="/src/assets/images/hero_tutoring_session_1793691967762.jpg"
+                  src={EDUCATOR_PORTRAITS.heroTutoringSession}
                   alt="QuickTeach verified tutor and student interactive session"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
+                  onError={(e) => handleImageError(e, EDUCATOR_PORTRAITS.heroTutoringSession)}
                 />
                 {/* Floating trust badge */}
                 <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 border border-slate-200/90 shadow-lg flex items-center justify-between text-xs">
@@ -336,10 +338,11 @@ export const HomePage: React.FC = () => {
               <div className="p-5">
                 <div className="flex items-start gap-4">
                   <img
-                    src={tutor.photoUrl}
+                    src={sanitizeImageUrl(tutor.photoUrl, tutor.name)}
                     alt={tutor.name}
                     referrerPolicy="no-referrer"
                     className="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0"
+                    onError={(e) => handleImageError(e, sanitizeImageUrl(undefined, tutor.name))}
                   />
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">

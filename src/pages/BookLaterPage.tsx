@@ -12,6 +12,7 @@ import {
   LANGUAGES_LIST,
 } from '../data/mockData';
 import { Tutor } from '../types';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   Calendar as CalendarIcon,
   Clock,
@@ -643,9 +644,10 @@ export const BookLaterPage: React.FC = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3.5">
                         <img
-                          src={tutor.photoUrl}
+                          src={sanitizeImageUrl(tutor.photoUrl, tutor.name)}
                           alt={tutor.name}
                           referrerPolicy="no-referrer"
+                          onError={(e) => handleImageError(e, tutor.name)}
                           className="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0"
                         />
                         <div>
@@ -780,9 +782,10 @@ export const BookLaterPage: React.FC = () => {
               {/* Selected Faculty Card */}
               <div className="bg-indigo-50/50 rounded-xl p-4 border border-indigo-100 flex items-center gap-4">
                 <img
-                  src={selectedTutor.photoUrl}
+                  src={sanitizeImageUrl(selectedTutor.photoUrl, selectedTutor.name)}
                   alt={selectedTutor.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, selectedTutor.name)}
                   className="w-16 h-16 rounded-xl object-cover border border-indigo-200 shrink-0"
                 />
                 <div>
@@ -999,9 +1002,10 @@ export const BookLaterPage: React.FC = () => {
                   <div key={tutor.id} className="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-4">
                     <div className="text-center">
                       <img
-                        src={tutor.photoUrl}
+                        src={sanitizeImageUrl(tutor.photoUrl, tutor.name)}
                         alt={tutor.name}
                         referrerPolicy="no-referrer"
+                        onError={(e) => handleImageError(e, tutor.name)}
                         className="w-20 h-20 rounded-xl object-cover mx-auto border border-slate-300"
                       />
                       <h4 className="font-bold text-slate-900 text-sm mt-2">{tutor.name}</h4>
@@ -1068,9 +1072,10 @@ export const BookLaterPage: React.FC = () => {
             <div className="mt-4 space-y-5">
               <div className="flex items-start gap-4">
                 <img
-                  src={detailedModalTutor.photoUrl}
+                  src={sanitizeImageUrl(detailedModalTutor.photoUrl, detailedModalTutor.name)}
                   alt={detailedModalTutor.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, detailedModalTutor.name)}
                   className="w-20 h-20 rounded-xl object-cover border border-slate-200 shrink-0"
                 />
                 <div>

@@ -13,6 +13,7 @@ import {
   SAMPLE_DOUBT_QUESTIONS,
 } from '../data/mockData';
 import { CommunityDoubtFeed } from '../components/CommunityDoubtFeed';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   MessageCircle,
   Phone,
@@ -555,9 +556,10 @@ export const DoubtSolverPage: React.FC = () => {
 
               <div className="flex items-center gap-4 pb-6 border-b border-slate-200">
                 <img
-                  src={matchedFaculty.photoUrl}
+                  src={sanitizeImageUrl(matchedFaculty.photoUrl, matchedFaculty.name)}
                   alt={matchedFaculty.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, matchedFaculty.name)}
                   className="w-18 h-18 rounded-2xl object-cover border border-slate-200 shrink-0"
                 />
                 <div>

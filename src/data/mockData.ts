@@ -16,6 +16,7 @@ import {
   AdmissionPackagesPricing,
   AdmissionCounsellingBooking,
 } from '../types';
+import { EDUCATOR_PORTRAITS } from '../utils/imageUtils';
 
 export const INITIAL_PRICING: PricingConfig = {
   platformFeeFixed: 30, // QuickTeach transparent platform fee
@@ -80,7 +81,7 @@ export const INITIAL_TUTORS: Tutor[] = [
   {
     id: 'tut-1',
     name: 'Dr. Priya Sharma',
-    photoUrl: '/src/assets/images/tutor_priya_sharma_1793691968127.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.priyaSharma,
     qualifications: 'M.Sc. Mathematics, Ph.D. Applied Statistics',
     university: 'Delhi University / IIT Delhi Alum',
     experienceYears: 7,
@@ -109,7 +110,7 @@ export const INITIAL_TUTORS: Tutor[] = [
   {
     id: 'tut-2',
     name: 'Rahul Verma',
-    photoUrl: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.rahulVerma,
     qualifications: 'B.Tech Mechanical Engineering, M.Sc. Physics',
     university: 'IIT Roorkee',
     experienceYears: 9,
@@ -138,7 +139,7 @@ export const INITIAL_TUTORS: Tutor[] = [
   {
     id: 'tut-3',
     name: 'Ananya Das',
-    photoUrl: '/src/assets/images/tutor_ananya_das_1793691969432.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.ananyaDas,
     qualifications: 'M.Sc. Biotechnology, B.Ed.',
     university: 'St. Xavier’s College, Kolkata',
     experienceYears: 6,
@@ -167,7 +168,7 @@ export const INITIAL_TUTORS: Tutor[] = [
   {
     id: 'tut-4',
     name: 'Vikramaditya Singh',
-    photoUrl: '/src/assets/images/tutor_vikram_singh_1793700539556.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.vikramSingh,
     qualifications: 'B.E. Computer Science, M.S. Data Analytics',
     university: 'BITS Pilani',
     experienceYears: 8,
@@ -196,7 +197,7 @@ export const INITIAL_TUTORS: Tutor[] = [
   {
     id: 'tut-5',
     name: 'Kavita Saxena',
-    photoUrl: '/src/assets/images/tutor_kavita_saxena_1793700553627.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.kavitaSaxena,
     qualifications: 'M.Sc. Chemistry, B.Ed. Curriculum Specialist',
     university: 'Lady Shri Ram College / Delhi University',
     experienceYears: 7,
@@ -225,7 +226,7 @@ export const INITIAL_TUTORS: Tutor[] = [
   {
     id: 'tut-6',
     name: 'Rajeshwar Kulkarni',
-    photoUrl: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.rajeshwarKulkarni,
     qualifications: 'M.Sc. Mathematics, B.Ed.',
     university: 'Pune University',
     experienceYears: 5,
@@ -254,7 +255,7 @@ export const INITIAL_TUTORS: Tutor[] = [
   {
     id: 'tut-7',
     name: 'Prof. Arvind Swaminathan',
-    photoUrl: '/src/assets/images/tutor_vikram_singh_1793700539556.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.arvindSwaminathan,
     qualifications: 'Ph.D. Theoretical Physics, Cambridge Tripos Scholar',
     university: 'Cambridge University & IISc Alum',
     experienceYears: 14,
@@ -326,7 +327,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
     preferredLanguage: 'English',
     tutorId: 'tut-1',
     tutorName: 'Dr. Priya Sharma',
-    tutorPhoto: '/src/assets/images/tutor_priya_sharma_1793691968127.jpg',
+    tutorPhoto: EDUCATOR_PORTRAITS.priyaSharma,
     tutorRate: 750,
     platformFee: 49,
     taxes: 211,
@@ -353,7 +354,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
     scheduledTimeSlot: '4:00 PM – 5:00 PM',
     tutorId: 'tut-2',
     tutorName: 'Rahul Verma',
-    tutorPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    tutorPhoto: EDUCATOR_PORTRAITS.rahulVerma,
     tutorRate: 900,
     platformFee: 49,
     taxes: 171,
@@ -378,7 +379,7 @@ export const INITIAL_DOUBTS: DoubtSession[] = [
     mode: 'video',
     tutorId: 'tut-2',
     tutorName: 'Rahul Verma',
-    tutorPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    tutorPhoto: EDUCATOR_PORTRAITS.rahulVerma,
     perMinuteRate: 20,
     durationSeconds: 780, // 13 minutes
     totalCost: 260,
@@ -637,7 +638,7 @@ export const INITIAL_CAREER_COUNSELLORS = [
   {
     id: 'cc-1',
     name: 'Dr. Radhika Sen',
-    photoUrl: '/src/assets/images/tutor_priya_sharma_1793691968127.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.priyaSharma,
     qualifications: 'Ph.D. Educational Psychology, Certified Global Career Counsellor (UCLA Ext.)',
     experienceYears: 12,
     specialisations: ['Stream Selection (Class 10-11)', 'Engineering vs Pure Science', 'Psychometric Mapping'],
@@ -651,7 +652,7 @@ export const INITIAL_CAREER_COUNSELLORS = [
   {
     id: 'cc-2',
     name: 'Rajeshwar Rao',
-    photoUrl: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.rahulVerma,
     qualifications: 'M.Tech IIT Kharagpur, Former Civil Servant & UPSC Mentor',
     experienceYears: 15,
     specialisations: ['Government Jobs & Civil Services Roadmap', 'Defence (NDA)', 'STEM Careers'],
@@ -665,7 +666,7 @@ export const INITIAL_CAREER_COUNSELLORS = [
   {
     id: 'cc-3',
     name: 'Sunaina Roy',
-    photoUrl: '/src/assets/images/tutor_ananya_das_1793691969432.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.ananyaDas,
     qualifications: 'M.A. Economics (Delhi School of Economics), MBA (ISB)',
     experienceYears: 9,
     specialisations: ['Commerce, Finance & IPMAT', 'Law (CLAT) vs Management', 'India vs Study Abroad'],
@@ -682,7 +683,7 @@ export const INITIAL_ADMISSION_COUNSELLORS = [
   {
     id: 'ac-1',
     name: 'Prof. K. N. Murthy',
-    photoUrl: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.knMurthy,
     qualifications: 'Former NIT Dean of Student Admissions, 14+ Years in JoSAA/CSAB',
     experienceYears: 16,
     examSpecialisations: ['JEE Main / Advanced', 'JoSAA & CSAB Seat Allocation', 'BITSAT Allotment'],
@@ -696,7 +697,7 @@ export const INITIAL_ADMISSION_COUNSELLORS = [
   {
     id: 'ac-2',
     name: 'Dr. Shalini Kapoor',
-    photoUrl: '/src/assets/images/tutor_priya_sharma_1793691968127.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.shaliniKapoor,
     qualifications: 'MD, Medical Education Advisor, MCC & State NEET Specialist',
     experienceYears: 11,
     examSpecialisations: ['NEET UG 15% All India Quota', 'State Domicile 85% Counselling', 'Deemed Medical Universities'],
@@ -710,7 +711,7 @@ export const INITIAL_ADMISSION_COUNSELLORS = [
   {
     id: 'ac-3',
     name: 'Arjun Bhasin',
-    photoUrl: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.arjunBhasin,
     qualifications: 'Alum St. Stephen’s & Faculty of Law, DU CSAS & CUET Strategist',
     experienceYears: 8,
     examSpecialisations: ['CUET UG (Delhi University CSAS, BHU, JNU)', 'CLAT Admissions', 'IPMAT'],
@@ -724,7 +725,7 @@ export const INITIAL_ADMISSION_COUNSELLORS = [
   {
     id: 'ac-4',
     name: 'Natasha Mehra',
-    photoUrl: '/src/assets/images/tutor_ananya_das_1793691969432.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.natashaMehra,
     qualifications: 'M.Ed. Harvard Graduate School of Education, College Board Certified',
     experienceYears: 10,
     examSpecialisations: ['SAT / ACT / AP Exams', 'US Common App / UC System', 'UK UCAS & Oxbridge Admissions'],
@@ -810,7 +811,7 @@ export const INITIAL_ADMISSION_BOOKINGS: AdmissionCounsellingBooking[] = [
     userNotes: 'Confused between SRCC B.Com (Hons) vs Hindu College Economics (Hons) based on career goals.',
     counsellorId: 'ac-3',
     counsellorName: 'Arjun Bhasin',
-    counsellorPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    counsellorPhoto: EDUCATOR_PORTRAITS.arjunBhasin,
     format: 'online',
     date: '2026-10-29',
     timeSlot: '5:00 PM – 5:45 PM',
@@ -867,7 +868,7 @@ export const INITIAL_ADMISSION_BOOKINGS: AdmissionCounsellingBooking[] = [
     userNotes: 'Preparing for JEE Main Session 1. Want to know safe cutoff marks for top NITs vs BITS Pilani.',
     counsellorId: 'ac-1',
     counsellorName: 'Prof. K. N. Murthy',
-    counsellorPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    counsellorPhoto: EDUCATOR_PORTRAITS.knMurthy,
     format: 'online',
     date: '2026-11-05',
     timeSlot: '3:00 PM – 3:45 PM',
@@ -896,7 +897,7 @@ export const INITIAL_COMMUNITY_QUESTIONS = [
         id: 'ans-101',
         facultyName: 'Dr. Rahul Verma',
         facultyDesignation: 'Verified Senior Physics Faculty (M.Sc. Physics, 9 Yrs Exp)',
-        facultyPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+        facultyPhoto: EDUCATOR_PORTRAITS.rahulVerma,
         isVerifiedFaculty: true,
         answerExplanation: 'At the highest point of vertical upward motion, the object’s instantaneous velocity becomes zero because it continuously decelerates under constant gravitational acceleration directed towards the Earth. As the object ascends, the downward gravitational force acts against the direction of motion, reducing its upward velocity by approximately 9.8 m/s every second until it reaches zero.',
         example: 'Think of tossing a ball upward with an initial velocity u = 19.6 m/s. Using the first kinematic equation v = u - gt, after 2 seconds: v = 19.6 - (9.8 × 2) = 0 m/s. Crucially, even though velocity is momentarily zero at this peak point, the acceleration is NOT zero—it is still acting downwards at approximately 9.8 m/s².',
@@ -950,7 +951,7 @@ export const INITIAL_COMMUNITY_QUESTIONS = [
         id: 'ans-103',
         facultyName: 'Dr. Priya Sharma',
         facultyDesignation: 'Verified Senior Science Faculty (7 Yrs Exp)',
-        facultyPhoto: '/src/assets/images/tutor_priya_sharma_1793691968127.jpg',
+        facultyPhoto: EDUCATOR_PORTRAITS.priyaSharma,
         isVerifiedFaculty: true,
         answerExplanation: 'Electrical conduction through a liquid requires the presence of mobile charge carriers (free ions). In the absence of water, acids exist as covalent molecules without free ions. When an acid dissolves in water (aqueous solution), the high dielectric constant of water facilitates ionization into hydronium cations and corresponding acid anions.',
         example: 'For example, dry HCl is a covalent gas with no free ions. However, in water: HCl(g) + H2O(l) → H3O+(aq) + Cl-(aq). These mobile H3O+ and Cl- ions migrate toward oppositely charged electrodes when an electric potential is applied, completing the electric circuit.',
@@ -990,7 +991,7 @@ export const INITIAL_APPLICATION_EXPERTS: ApplicationExpert[] = [
   {
     id: 'exp-1',
     name: 'Sunita Rao',
-    photoUrl: '/src/assets/images/tutor_kavita_saxena_1793700553627.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.kavitaSaxena,
     experienceYears: 8,
     examinationsHandled: ['CUET UG', 'Delhi University CSAS', 'IPMAT', 'CLAT'],
     languages: ['English', 'Hindi'],
@@ -1006,7 +1007,7 @@ export const INITIAL_APPLICATION_EXPERTS: ApplicationExpert[] = [
   {
     id: 'exp-2',
     name: 'Rohan Kapoor',
-    photoUrl: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.rohanKapoor,
     experienceYears: 10,
     examinationsHandled: ['CAT', 'XAT', 'CMAT', 'NMAT', 'SNAP'],
     languages: ['English', 'Hindi'],
@@ -1022,7 +1023,7 @@ export const INITIAL_APPLICATION_EXPERTS: ApplicationExpert[] = [
   {
     id: 'exp-3',
     name: 'Rahul Verma',
-    photoUrl: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.rahulVerma,
     experienceYears: 9,
     examinationsHandled: ['JEE Main', 'JEE Advanced', 'BITSAT', 'JoSAA / CSAB'],
     languages: ['English', 'Hindi'],
@@ -1038,7 +1039,7 @@ export const INITIAL_APPLICATION_EXPERTS: ApplicationExpert[] = [
   {
     id: 'exp-4',
     name: 'Dr. Alok Sen',
-    photoUrl: '/src/assets/images/tutor_priya_sharma_1793691968127.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.alokSen,
     experienceYears: 12,
     examinationsHandled: ['NEET UG', 'MCC All India Quota', 'State Medical Counselling'],
     languages: ['English', 'Hindi', 'Bengali'],
@@ -1054,7 +1055,7 @@ export const INITIAL_APPLICATION_EXPERTS: ApplicationExpert[] = [
   {
     id: 'exp-5',
     name: 'Rakesh Ranjan',
-    photoUrl: '/src/assets/images/tutor_vikram_singh_1793700539556.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.rakeshRanjan,
     experienceYears: 11,
     examinationsHandled: ['SSC CGL', 'SSC CHSL', 'Railway RRB', 'State PSC'],
     languages: ['English', 'Hindi'],
@@ -1070,7 +1071,7 @@ export const INITIAL_APPLICATION_EXPERTS: ApplicationExpert[] = [
   {
     id: 'exp-6',
     name: 'Sangeeta Nayak',
-    photoUrl: '/src/assets/images/tutor_ananya_das_1793691969432.jpg',
+    photoUrl: EDUCATOR_PORTRAITS.sangeetaNayak,
     experienceYears: 11,
     examinationsHandled: ['RBI Grade B', 'UPSC Civil Services (DAF)', 'SBI PO', 'NABARD'],
     languages: ['English', 'Hindi', 'Odia'],
@@ -1141,7 +1142,7 @@ export const INITIAL_PRE_EXAM_APPLICATIONS: PreExamApplication[] = [
     ],
     expertId: 'exp-1',
     expertName: 'Sunita Rao',
-    expertPhoto: '/src/assets/images/tutor_kavita_saxena_1793700553627.jpg',
+    expertPhoto: EDUCATOR_PORTRAITS.kavitaSaxena,
     expertQualification: 'M.A., Delhi University',
     consultationFee: 799,
     scheduledDate: '2026-10-27',
@@ -1199,7 +1200,7 @@ export const INITIAL_PRE_EXAM_APPLICATIONS: PreExamApplication[] = [
     ],
     expertId: 'exp-2',
     expertName: 'Rohan Kapoor',
-    expertPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    expertPhoto: EDUCATOR_PORTRAITS.rohanKapoor,
     expertQualification: 'MBA (IIM Lucknow)',
     consultationFee: 1199,
     scheduledDate: '2026-09-15',
@@ -1252,7 +1253,7 @@ export const INITIAL_POST_EXAM_PACKAGES: PostExamApplication[] = [
     daysRemaining: 9,
     expertId: 'exp-3',
     expertName: 'Rahul Verma',
-    expertPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    expertPhoto: EDUCATOR_PORTRAITS.rahulVerma,
     expertSpecialisation: 'IIT Roorkee Alum · JoSAA / JAC Delhi Senior Counselling Specialist',
     status: 'preference_filling',
     trackedColleges: [
@@ -1361,7 +1362,7 @@ export const INITIAL_POST_EXAM_PACKAGES: PostExamApplication[] = [
     daysRemaining: 3,
     expertId: 'exp-2',
     expertName: 'Rohan Kapoor',
-    expertPhoto: '/src/assets/images/tutor_rahul_verma_1793691968773.jpg',
+    expertPhoto: EDUCATOR_PORTRAITS.rohanKapoor,
     expertSpecialisation: 'IIM Lucknow Alum · Top 20 Indian B-Schools Application Specialist',
     status: 'active_15_day',
     trackedColleges: [
@@ -1442,7 +1443,7 @@ export const INITIAL_POST_EXAM_PACKAGES: PostExamApplication[] = [
     daysRemaining: 8,
     expertId: 'exp-5',
     expertName: 'Rakesh Ranjan',
-    expertPhoto: '/src/assets/images/tutor_vikram_singh_1793700539556.jpg',
+    expertPhoto: EDUCATOR_PORTRAITS.rakeshRanjan,
     expertSpecialisation: 'Ex-Central Secretariat Service · Staff Selection Post Preference Specialist',
     status: 'active_15_day',
     trackedColleges: [

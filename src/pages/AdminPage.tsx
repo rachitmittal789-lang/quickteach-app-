@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { BookingStatus } from '../types';
+import { sanitizeImageUrl, handleImageError } from '../utils/imageUtils';
 import {
   ShieldAlert,
   UserCheck,
@@ -476,9 +477,10 @@ export const AdminPage: React.FC = () => {
                       <td className="p-3">
                         <div className="flex items-center gap-3">
                           <img
-                            src={t.photoUrl}
+                            src={sanitizeImageUrl(t.photoUrl, t.name)}
                             alt={t.name}
                             referrerPolicy="no-referrer"
+                            onError={(e) => handleImageError(e, t.name)}
                             className="w-10 h-10 rounded-xl object-cover border border-slate-200 shrink-0"
                           />
                           <div>

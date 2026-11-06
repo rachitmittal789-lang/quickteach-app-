@@ -41,6 +41,7 @@ import {
   INITIAL_POST_EXAM_PACKAGES,
   INITIAL_ADMISSION_PACKAGES_PRICING,
 } from '../data/mockData';
+import { EDUCATOR_PORTRAITS, sanitizeImageUrl } from '../utils/imageUtils';
 
 export type PageView =
   | 'home'
@@ -135,8 +136,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Load from localStorage or defaults
   const [tutors, setTutors] = useState<Tutor[]>(() => {
     try {
-      const saved = localStorage.getItem('qt_tutors_v3');
-      return saved ? JSON.parse(saved) : INITIAL_TUTORS;
+      const saved = localStorage.getItem('qt_tutors_v4') || localStorage.getItem('qt_tutors_v3');
+      if (saved) {
+        const parsed: Tutor[] = JSON.parse(saved);
+        return parsed.map((t) => ({
+          ...t,
+          photoUrl: sanitizeImageUrl(t.photoUrl, t.name),
+        }));
+      }
+      return INITIAL_TUTORS;
     } catch {
       return INITIAL_TUTORS;
     }
@@ -145,7 +153,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [bookings, setBookings] = useState<Booking[]>(() => {
     try {
       const saved = localStorage.getItem('qt_bookings');
-      return saved ? JSON.parse(saved) : INITIAL_BOOKINGS;
+      if (saved) {
+        const parsed: Booking[] = JSON.parse(saved);
+        return parsed.map((b) => ({
+          ...b,
+          tutorPhoto: sanitizeImageUrl(b.tutorPhoto, b.tutorName),
+        }));
+      }
+      return INITIAL_BOOKINGS;
     } catch {
       return INITIAL_BOOKINGS;
     }
@@ -154,7 +169,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [doubtSessions, setDoubtSessions] = useState<DoubtSession[]>(() => {
     try {
       const saved = localStorage.getItem('qt_doubts');
-      return saved ? JSON.parse(saved) : INITIAL_DOUBTS;
+      if (saved) {
+        const parsed: DoubtSession[] = JSON.parse(saved);
+        return parsed.map((d) => ({
+          ...d,
+          tutorPhoto: sanitizeImageUrl(d.tutorPhoto, d.tutorName),
+        }));
+      }
+      return INITIAL_DOUBTS;
     } catch {
       return INITIAL_DOUBTS;
     }
@@ -203,7 +225,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [careerBookings, setCareerBookings] = useState<CareerCounsellingBooking[]>(() => {
     try {
       const saved = localStorage.getItem('qt_career_bookings');
-      return saved ? JSON.parse(saved) : [];
+      if (saved) {
+        const parsed: CareerCounsellingBooking[] = JSON.parse(saved);
+        return parsed.map((c) => ({
+          ...c,
+          counsellorPhoto: sanitizeImageUrl(c.counsellorPhoto, c.counsellorName),
+        }));
+      }
+      return [];
     } catch {
       return [];
     }
@@ -214,7 +243,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [admissionBookings, setAdmissionBookings] = useState<AdmissionCounsellingBooking[]>(() => {
     try {
       const saved = localStorage.getItem('qt_admission_bookings');
-      return saved && JSON.parse(saved).length > 0 ? JSON.parse(saved) : INITIAL_ADMISSION_BOOKINGS;
+      if (saved && JSON.parse(saved).length > 0) {
+        const parsed: AdmissionCounsellingBooking[] = JSON.parse(saved);
+        return parsed.map((a) => ({
+          ...a,
+          counsellorPhoto: sanitizeImageUrl(a.counsellorPhoto, a.counsellorName),
+        }));
+      }
+      return INITIAL_ADMISSION_BOOKINGS;
     } catch {
       return INITIAL_ADMISSION_BOOKINGS;
     }
@@ -242,7 +278,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [preExamApplications, setPreExamApplications] = useState<PreExamApplication[]>(() => {
     try {
       const saved = localStorage.getItem('qt_pre_exam_apps');
-      return saved ? JSON.parse(saved) : INITIAL_PRE_EXAM_APPLICATIONS;
+      if (saved) {
+        const parsed: PreExamApplication[] = JSON.parse(saved);
+        return parsed.map((p) => ({
+          ...p,
+          expertPhoto: p.expertPhoto ? sanitizeImageUrl(p.expertPhoto, p.expertName) : undefined,
+        }));
+      }
+      return INITIAL_PRE_EXAM_APPLICATIONS;
     } catch {
       return INITIAL_PRE_EXAM_APPLICATIONS;
     }
@@ -251,7 +294,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [postExamApplications, setPostExamApplications] = useState<PostExamApplication[]>(() => {
     try {
       const saved = localStorage.getItem('qt_post_exam_apps');
-      return saved ? JSON.parse(saved) : INITIAL_POST_EXAM_PACKAGES;
+      if (saved) {
+        const parsed: PostExamApplication[] = JSON.parse(saved);
+        return parsed.map((p) => ({
+          ...p,
+          expertPhoto: sanitizeImageUrl(p.expertPhoto, p.expertName),
+        }));
+      }
+      return INITIAL_POST_EXAM_PACKAGES;
     } catch {
       return INITIAL_POST_EXAM_PACKAGES;
     }
@@ -281,7 +331,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem('qt_admission_pricing', JSON.stringify(admissionPricing));
   }, [admissionPricing]);
   useEffect(() => {
-    localStorage.setItem('qt_tutors_v3', JSON.stringify(tutors));
+    localStorage.setItem('qt_tutors_v4', JSON.stringify(tutors));
   }, [tutors]);
 
   useEffect(() => {
@@ -436,7 +486,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const newTutor: Tutor = {
           id: `tut-gen-${Date.now()}`,
           name: app.fullName,
-          photoUrl: '/src/assets/images/tutor_ananya_das_1793691969432.jpg',
+          photoUrl: EDUCATOR_PORTRAITS.ananyaDas,
           qualifications: app.qualification,
           university: app.university,
           experienceYears: app.experienceYears,
